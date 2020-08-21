@@ -1,9 +1,9 @@
 {
 	"name": "primary-category",
 	"version": "0.1.0",
-	"description": "Example block written with ESNext standard and JSX support – build step required.",
-	"author": "The WordPress Contributors",
-	"license": "GPL-2.0-or-later",
+	"description": "TODO Example block written with ESNext standard and JSX support – build step required.",
+	"author": "Pragmatic",
+	"license": "GPL-3.0-only",
 	"main": "build/index.js",
 	"scripts": {
 		"build": "wp-scripts build",
@@ -15,5 +15,8 @@
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^12.1.1"
+	},
+	"dependencies": {
+		"prop-types": "^15.7.2"
 	}
 }

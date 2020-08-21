@@ -39,25 +39,16 @@ function register_assets() : void {
 		$script_asset['version']
 	);
 
-	$editor_css = 'build/index.css';
+	/*$editor_css = 'build/index.css';
 	\wp_register_style(
 		'pragmatic-primary-category-block-editor',
 		\plugins_url( $editor_css, __DIR__ ),
 		[],
 		\filemtime( "$dir/$editor_css" )
-	);
-
-	$style_css = 'build/style-index.css';
-	\wp_register_style(
-		'pragmatic-primary-category-block',
-		\plugins_url( $style_css, __DIR__ ),
-		[],
-		\filemtime( "$dir/$style_css" )
-	);
+	);*/
 
 	\register_block_type( 'pragmatic/primary-category', [
 		'editor_script' => 'pragmatic-primary-category-block-editor',
-		'editor_style'  => 'pragmatic-primary-category-block-editor',
-		'style'         => 'pragmatic-primary-category-block',
+		//'editor_style'  => 'pragmatic-primary-category-block-editor',
 	] );
 }
