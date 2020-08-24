@@ -1,7 +1,7 @@
 {
 	"name": "primary-category",
 	"version": "0.1.0",
-	"description": "TODO Example block written with ESNext standard and JSX support – build step required.",
+	"description": "Set a primary category for a post.",
 	"author": "Pragmatic",
 	"license": "GPL-3.0-only",
 	"main": "build/index.js",

@@ -1,9 +1,12 @@
 <?php
 /**
- * Plugin Name: Primary Category. TODO.
- * Description: TODO.
+ * Plugin Name: Primary Category.
+ * Description: Set a primary category for a post.
  * Author: Pragmatic
  * Author URI: https://pragmatic.agency
+ *
+ * @copyright Copyright 2020-present, Pragmatic Agency Limited (https://pragmatic.agency)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 only.
  */
 
 declare( strict_types = 1 );

@@ -2,15 +2,22 @@
 
 __A project by [Pragmatic](https://pragmatic.agency).__
 
-> TODO Description.
+> Set a primary category for a post.
+
+This software is beta, is not feature completed, has hardcoded limitations, and is provided without warranty or support.
 
 ---
 
+* [Credits](#credits)
 * [Requirements](#requirements)
 * [Installation](#installation)
 * [Development Process](#development-process)
 
 ---
+
+## Credits
+The implementation of this feature was based on the same in the [Yoast SEO plugin for WordPress](https://yoast.com/wordpress/plugins/seo/). Go check them out!
+
 
 ## Requirements
 ### Usage Requirements
@@ -23,11 +30,8 @@ Ensure you have the prerequisite software installed:
 ## Installation
 Install this plugin with Composer: `composer require pragmaticweb/primary-category`. Activate the plugin in your WordPress in the usual manner.
 
-TODO installation/setup structure.
-
 
 ## Development Process
-
 This plugin mostly follows the standard [Git Flow](http://jeffkreeftmeijer.com/2010/why-arent-you-using-git-flow/) model.
 
 
