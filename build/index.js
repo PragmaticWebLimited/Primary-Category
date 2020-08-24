@@ -1454,6 +1454,7 @@ var PrimaryTaxonomyPicker = /*#__PURE__*/function (_Component) {
     _this.input = document.getElementById(fieldId);
     _this.state = {
       selectedTerms: [],
+      selectedTermId: -1,
       terms: []
     };
     return _this;
@@ -1512,11 +1513,11 @@ var PrimaryTaxonomyPicker = /*#__PURE__*/function (_Component) {
   }, {
     key: "handleSelectedTermsChange",
     value: function handleSelectedTermsChange() {
-      var _this2 = this;
-
-      var selectedTerms = this.state.selectedTerms;
+      var _this$state = this.state,
+          selectedTermId = _this$state.selectedTermId,
+          selectedTerms = _this$state.selectedTerms;
       var selectedTerm = selectedTerms.find(function (term) {
-        return term.id === _this2.input.value;
+        return term.id === selectedTermId;
       });
 
       if (!selectedTerm) {
@@ -1551,7 +1552,7 @@ var PrimaryTaxonomyPicker = /*#__PURE__*/function (_Component) {
   }, {
     key: "fetchTerms",
     value: function fetchTerms() {
-      var _this3 = this;
+      var _this2 = this;
 
       var taxonomy = this.props.taxonomy;
 
@@ -1568,16 +1569,10 @@ var PrimaryTaxonomyPicker = /*#__PURE__*/function (_Component) {
         })
       });
       this.fetchRequest.then(function (terms) {
-        var oldState = _this3.state;
-
-        _this3.setState({
+        _this2.setState({
           terms: terms,
-          selectedTerms: _this3.getSelectedTerms(terms, _this3.props.selectedTermIds)
-        }, function () {
-          if (oldState.terms.length === 0 && _this3.state.terms.length > 0) {
-            var theField = document.getElementById(taxonomy.fieldId);
-            theField.value = '';
-          }
+          selectedTerms: _this2.getSelectedTerms(terms, _this2.props.selectedTermIds),
+          selectedTermId: parseInt(_this2.input.value, 10)
         });
       });
     }
@@ -1628,6 +1623,9 @@ var PrimaryTaxonomyPicker = /*#__PURE__*/function (_Component) {
     key: "onChange",
     value: function onChange(termId) {
       this.input.value = termId === -1 ? '' : termId;
+      this.setState({
+        selectedTermId: termId
+      });
     }
     /**
      * Updates the primary taxonomy replacement variable.
@@ -1663,8 +1661,11 @@ var PrimaryTaxonomyPicker = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       var taxonomy = this.props.taxonomy;
+      var _this$state2 = this.state,
+          selectedTermId = _this$state2.selectedTermId,
+          selectedTerms = _this$state2.selectedTerms;
 
-      if (this.state.selectedTerms.length < 2) {
+      if (selectedTerms.length < 2) {
         return null;
       }
 
@@ -1677,10 +1678,10 @@ var PrimaryTaxonomyPicker = /*#__PURE__*/function (_Component) {
       }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__["sprintf"])(
       /* translators: %s expands to the taxonomy name. */
       Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__["__"])('Select the primary %s', 'primary-taxonomy'), taxonomy.singularLabel.toLowerCase())), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_TaxonomyPicker__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        value: this.input.value,
+        value: selectedTermId,
         onChange: this.onChange,
         id: fieldId,
-        terms: this.state.selectedTerms
+        terms: selectedTerms
       }));
     }
   }]);

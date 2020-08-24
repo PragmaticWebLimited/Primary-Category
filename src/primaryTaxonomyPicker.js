@@ -19,11 +19,13 @@ class PrimaryTaxonomyPicker extends Component {
 		super( props );
 
 		this.onChange = this.onChange.bind( this );
+
 		const { fieldId } = props.taxonomy;
 		this.input = document.getElementById( fieldId );
 
 		this.state = {
 			selectedTerms: [],
+			selectedTermId: -1,
 			terms: [],
 		};
 	}
@@ -73,10 +75,10 @@ class PrimaryTaxonomyPicker extends Component {
 	 * @returns {void}
 	 */
 	handleSelectedTermsChange() {
-		const { selectedTerms } = this.state;
+		const { selectedTermId, selectedTerms } = this.state;
 
 		const selectedTerm = selectedTerms.find( ( term ) => {
-			return term.id === this.input.value;
+			return term.id === selectedTermId;
 		} );
 
 		if ( ! selectedTerm ) {
@@ -120,20 +122,11 @@ class PrimaryTaxonomyPicker extends Component {
 		} );
 
 		this.fetchRequest.then( ( terms ) => {
-			const oldState = this.state;
-
-			this.setState(
-				{
-					terms,
-					selectedTerms: this.getSelectedTerms( terms, this.props.selectedTermIds ),
-				},
-				() => {
-					if ( oldState.terms.length === 0 && this.state.terms.length > 0 ) {
-						const theField = document.getElementById( taxonomy.fieldId );
-						theField.value = '';
-					}
-				}
-			);
+			this.setState( {
+				terms,
+				selectedTerms: this.getSelectedTerms( terms, this.props.selectedTermIds ),
+				selectedTermId: parseInt( this.input.value, 10 ),
+			} );
 		} );
 	}
 
@@ -178,30 +171,10 @@ class PrimaryTaxonomyPicker extends Component {
 	 */
 	onChange( termId ) {
 		this.input.value = termId === -1 ? '' : termId;
-	}
 
-	/**
-	 * Updates the primary taxonomy replacement variable.
-	 *
-	 * @param {number} termId The term's id.
-	 *
-	 * @returns {void}
-	 */
-	updateReplacementVariable( termId ) {
-		/*
-		 * We only use the primary category replacement variable, therefore only do this for the
-		 * category taxonomy.
-		 */
-		if ( this.props.taxonomy.name !== 'category' ) {
-			return;
-		}
-
-		const primaryTerm = this.state.selectedTerms.find( ( term ) => term.id === termId );
-
-		this.props.updateReplacementVariable(
-			`primary_${ this.props.taxonomy.name }`,
-			primaryTerm ? primaryTerm.name : ''
-		);
+		this.setState( {
+			selectedTermId: termId,
+		} );
 	}
 
 	/**
@@ -211,8 +184,9 @@ class PrimaryTaxonomyPicker extends Component {
 	 */
 	render() {
 		const { taxonomy } = this.props;
+		const { selectedTermId, selectedTerms } = this.state;
 
-		if ( this.state.selectedTerms.length < 2 ) {
+		if ( selectedTerms.length < 2 ) {
 			return null;
 		}
 
@@ -228,10 +202,10 @@ class PrimaryTaxonomyPicker extends Component {
 					) }
 				</label>
 				<TaxonomyPicker
-					value={ this.input.value }
+					value={ selectedTermId }
 					onChange={ this.onChange }
 					id={ fieldId }
-					terms={ this.state.selectedTerms }
+					terms={ selectedTerms }
 				/>
 			</div>
 		);
@@ -240,7 +214,6 @@ class PrimaryTaxonomyPicker extends Component {
 
 PrimaryTaxonomyPicker.propTypes = {
 	selectedTermIds: PropTypes.arrayOf( PropTypes.number ),
-	updateReplacementVariable: PropTypes.func,
 	receiveEntityRecords: PropTypes.func,
 	taxonomy: PropTypes.shape( {
 		name: PropTypes.string,
