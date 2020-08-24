@@ -1,0 +1,28 @@
+{
+	"name": "pragmaticweb/primary-category",
+	"description": "Set a primary category for a post",
+	"type": "wordpress-plugin",
+	"license": "GPL-3.0-only",
+	"config": {
+		"autoloader-suffix": "pragpricat",
+		"preferred-install": "dist",
+		"process-timeout": 600,
+		"sort-packages": true
+	},
+	"authors": [
+		{
+			"email": "hello@pragmatic.agency",
+			"name": "Pragmatic"
+		},
+		{
+			"email": "paul@byotos.com",
+			"name": "Paul Gibbs"
+		}
+	],
+	"homepage": "https://pragmatic.agency/",
+	"require": {
+		"php": "~7.3",
+		"oomphinc/composer-installers-extender": "~1.1"
+	},
+	"require-dev": {}
+}
