@@ -10,7 +10,8 @@
 		"sort-packages": true,
 		"allow-plugins": {
 			"composer/installers": true,
-			"oomphinc/composer-installers-extender": true
+			"oomphinc/composer-installers-extender": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true
 		}
 	},
 	"authors": [
@@ -28,5 +29,8 @@
 		"php": "~7.3 | ~8.0",
 		"oomphinc/composer-installers-extender": "~1.1 || ~2.0"
 	},
-	"require-dev": {}
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
+		"phpcompatibility/php-compatibility": "^9.3"
+	}
 }
