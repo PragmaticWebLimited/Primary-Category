@@ -4,7 +4,7 @@
  * Description: Set a primary category for a post.
  * Author: Pragmatic
  * Author URI: https://pragmatic.agency
- * Version: 0.2.0
+ * Version: 0.2.1
  *
  * @copyright Copyright 2020-present, Pragmatic Agency Limited (https://pragmatic.agency)
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 only.
