@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => 'pragmaticweb/primary-category',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '73f551a9913a29b3d81a20a3aac9159f076966ba',
+        'type' => 'wordpress-plugin',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => false,
+    ),
+    'versions' => array(
+        'composer/installers' => array(
+            'pretty_version' => 'v2.2.0',
+            'version' => '2.2.0.0',
+            'reference' => 'c29dc4b93137acb82734f672c37e029dfbd95b35',
+            'type' => 'composer-plugin',
+            'install_path' => __DIR__ . '/./installers',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'oomphinc/composer-installers-extender' => array(
+            'pretty_version' => '2.0.1',
+            'version' => '2.0.1.0',
+            'reference' => 'cbf4b6f9a24153b785d09eee755b995ba87bd5f9',
+            'type' => 'composer-plugin',
+            'install_path' => __DIR__ . '/../oomphinc/composer-installers-extender',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'pragmaticweb/primary-category' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '73f551a9913a29b3d81a20a3aac9159f076966ba',
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);
