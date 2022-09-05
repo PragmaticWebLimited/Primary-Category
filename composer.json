@@ -7,7 +7,11 @@
 		"autoloader-suffix": "pragpricat",
 		"preferred-install": "dist",
 		"process-timeout": 600,
-		"sort-packages": true
+		"sort-packages": true,
+		"allow-plugins": {
+			"composer/installers": true,
+			"oomphinc/composer-installers-extender": true
+		}
 	},
 	"authors": [
 		{
@@ -22,7 +26,7 @@
 	"homepage": "https://pragmatic.agency/",
 	"require": {
 		"php": "~7.3",
-		"oomphinc/composer-installers-extender": "~1.1"
+		"oomphinc/composer-installers-extender": "~1.1 || ~2.0"
 	},
 	"require-dev": {}
 }
